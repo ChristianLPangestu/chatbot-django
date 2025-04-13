@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - GPT-4 Design Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      margin: 0;
+    }
+    .left-panel {
+      flex: 1;
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .right-panel {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="left-panel">
+    <p class="fs-5">
+      Selamat datang di <strong>GPT-4 Design Assistant</strong> —<br>
+      platform kolaboratif berbasis AI yang membantumu mengeksplorasi ide,
+      merancang prototipe, dan menyelesaikan setiap tahap Design Thinking
+      dengan lebih terarah dan kreatif.
+    </p>
+  </div>
+  <div class="right-panel">
+    <div class="form-container">
+      <h2 class="text-center mb-4">Login</h2>
+      <form method="POST" novalidate>
+        {% csrf_token %}
+      
+        <div class="mb-3">
+          <label for="email">Username or Email</label>
+          <input type="text" name="email" id="email"
+                 class="form-control {% if form.email.errors %}is-invalid{% endif %}"
+                 value="{{ form.email.value|default:'' }}"
+                 placeholder="Enter your username or email">
+          {% for error in form.email.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
+        </div>
+        
+        <div class="mb-3">
+          <label>Password</label>
+          <input type="password" name="password"
+            class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+            value="{{ form.data.password|default:'' }}"
+            placeholder="Enter Password">
+          {% for error in form.password.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
+        </div>
+        
+      
+        <div class="d-grid">
+          <button type="submit" class="btn btn-dark">Login</button>
+        </div>
+      </form>
+      
+      <p class="mt-3 text-center">
+        Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

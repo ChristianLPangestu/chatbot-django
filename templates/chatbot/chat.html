@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPT-4 Design Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+  <link rel="icon" href="https://example.com/favicon.ico" type="image/x-icon">
+
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      background-color: #f1f1f1;
+    }
+
+    .sidebar {
+      transition: all 0.3s ease;
+      width: 250px;
+      background-color: #ffffff;
+      padding: 1rem;
+      border-right: 1px solid #ddd;
+    }
+
+    .sidebar h5 {
+      margin-bottom: 0.2rem;
+    }
+    #showSidebar {
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+
+    .chat-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+
+    .phase-button {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 0.5rem;
+    }
+
+    .top-phase {
+      margin-bottom: 1rem;
+    }
+
+    .input-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      margin: 2rem auto;
+    }
+
+    .input-box input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .input-box button {
+      background-color: transparent;
+      border: none;
+      position: relative;
+      margin-left: -35px;
+      cursor: pointer;
+    }
+
+    .input-box button i {
+      font-size: 1.2rem;
+      color: #444;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+    <div class="d-flex justify-content-end mb-3">
+        <button id="toggleSidebar" class="btn btn-outline-secondary btn-sm" title="Close Sidebar">
+        <i class="fas fa-outdent fa-lg"></i>
+        </button>
+    </div>
+    
+    <div class="d-flex align-items-center mb-4">
+        <i class="fas fa-user-circle fa-2x me-3 text-secondary"></i>  <!-- Icon user -->
+        <div>
+        <div><strong>{{ request.user.username }}</strong></div>
+        <div class="text-muted small">{{ request.user.email }}</div>
+        </div>
+    </div>
+    
+    <a href="?phase=emphatize" class="btn btn-outline-dark phase-button {% if selected_phase == 'emphatize' %}active{% endif %}">
+        <i class="fas fa-users me-2"></i> Emphatize
+      </a>
+      <a href="?phase=define" class="btn btn-outline-dark phase-button {% if selected_phase == 'define' %}active{% endif %}">
+        <i class="fas fa-file-alt me-2"></i> Define
+      </a>
+      <a href="?phase=ideate" class="btn btn-outline-dark phase-button {% if selected_phase == 'ideate' %}active{% endif %}">
+        <i class="fas fa-lightbulb me-2"></i> Ideate
+      </a>
+      <a href="?phase=prototype" class="btn btn-outline-dark phase-button {% if selected_phase == 'prototype' %}active{% endif %}">
+        <i class="fas fa-tools me-2"></i> Prototype
+      </a>
+      <a href="?phase=test" class="btn btn-outline-dark phase-button {% if selected_phase == 'test' %}active{% endif %}">
+        <i class="fas fa-check me-2"></i> Test
+      </a>
+      
+    <form method="POST" action="{% url 'logout' %}" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger phase-button w-100">
+        <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </button>
+    </form>
+  </div>
+    <button id="showSidebar" class="btn btn-secondary position-absolute m-3 d-none">
+    <i class="fas fa-bars"></i>
+    </button>  
+  <div class="chat-container">
+    <div class="top-phase">
+        <button class="btn btn-secondary rounded-pill px-4">
+          {% if selected_phase == 'emphatize' %}
+            <i class="fas fa-users me-2"></i> Emphatize
+          {% elif selected_phase == 'define' %}
+            <i class="fas fa-file-alt me-2"></i> Define
+          {% elif selected_phase == 'ideate' %}
+            <i class="fas fa-lightbulb me-2"></i> Ideate
+          {% elif selected_phase == 'prototype' %}
+            <i class="fas fa-tools me-2"></i> Prototype
+          {% elif selected_phase == 'test' %}
+            <i class="fas fa-check me-2"></i> Test
+          {% endif %}
+        </button>
+      </div>
+      
+
+    {% if chats %}
+      <div class="mb-3 text-center">Riwayat chat akan muncul di sini</div>
+      <!-- Loop chat history di sini jika sudah ada -->
+    {% else %}
+      <div class="text-center mb-5">
+        <h5>What Can I help with?</h5>
+      </div>
+    {% endif %}
+    
+    <form method="POST" class="input-box">
+        {% csrf_token %}
+        <input type="hidden" name="phase" value="{{ selected_phase }}">
+        <input type="text" name="message" placeholder="Type your message..." required>
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+      </form>
+      
+  </div>
+  
+</body>
+<script>
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const showSidebarBtn = document.getElementById('showSidebar');
+    const sidebar = document.getElementById('sidebar');
+    let isCollapsed = false;
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.style.display = 'none';
+        showSidebarBtn.classList.remove('d-none');
+        isCollapsed = true;
+    });
+
+    showSidebarBtn.addEventListener('click', () => {
+        sidebar.style.display = 'block';
+        showSidebarBtn.classList.add('d-none');
+        isCollapsed = false;
+    });
+</script>  
+</html>
