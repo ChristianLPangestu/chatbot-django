@@ -18,11 +18,11 @@ def login_view(request):
     if request.method == 'POST':
         form = CustomLoginForm(request.POST)
         if form.is_valid():
-            print("✅ Login berhasil")
-            login(request, form.get_user())
-            return redirect('chat_view')
-        else:
-            print("❌ Login gagal:", form.errors)
+            user = form.get_user()
+            if user is not None:
+                login(request, user)
+                return redirect('chat_view')
     else:
         form = CustomLoginForm()
     return render(request, 'accounts/login.html', {'form': form})
+
