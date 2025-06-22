@@ -145,3 +145,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TEST_OPEN_API_KEY = os.getenv("TEST_OPEN_API_KEY")
+
+CSRF_TRUSTED_ORIGINS = ['https://web-production-474d.up.railway.app']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
