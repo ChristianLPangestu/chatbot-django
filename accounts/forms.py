@@ -30,7 +30,7 @@ class CustomLoginForm(forms.Form):
             user = User.objects.filter(email=email_or_username).first()
 
         if not user:
-            self.add_error('username ', 'Username or email not found.')
+            self.add_error('username', 'Username or email not found.')
             return self.cleaned_data
 
         auth_user = authenticate(username=user.username, password=password)
