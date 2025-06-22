@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from .models import ChatLog
 from .prompts import PROMPTS
 from django.http import JsonResponse
-from markdown import markdown
+from markdown2 import markdown
 
 @login_required
 def chat_view(request):
