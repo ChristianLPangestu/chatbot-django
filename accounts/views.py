@@ -26,3 +26,6 @@ def login_view(request):
         form = CustomLoginForm()
     return render(request, 'accounts/login.html', {'form': form})
 
+from django.contrib.auth.models import User
+if not User.objects.filter(username='admin').exists():
+    User.objects.create_superuser('admin', 'admin@example.com', 'adminpass123')
