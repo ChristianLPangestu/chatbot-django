@@ -1,0 +1,243 @@
+/* === Global Styles === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* === Chat Container === */
+.chat-container {
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+/* === Sidebar === */
+.sidebar {
+  transition: all 0.3s ease;
+  width: 250px;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* === Top Phase Indicator === */
+.top-phase {
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
+/* === Chat History === */
+.chat-history {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Input Box === */
+.input-box {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 800px;
+  margin: 1rem auto;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Input field inside .input-box */
+.input-box input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+}
+
+/* Button inside .input-box */
+.input-box button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.75rem;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon inside button */
+.input-box button i {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+/* === Input Wrapper + Textarea === */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper textarea {
+  width: 100%;
+  padding: 0.75rem 3rem 0.75rem 1rem;
+  border-radius: 16px;
+  font-size: 1rem;
+  resize: none;
+  overflow-y: auto;
+  border: none;
+  outline: none;
+  min-height: 40px;
+  max-height: 200px;
+  padding: 0.75rem 3rem 0.9rem 1rem;
+}
+
+/* === Global Textarea Fallback === */
+textarea {
+  flex: 1;
+  overflow: hidden;
+  resize: none;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  min-height: 40px;
+  max-height: 200px;
+}
+
+/* === Send Button === */
+.send-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.send-btn i {
+  color: #333;
+}
+
+/* === Phase Button Styles === */
+.phase-button {
+  margin-bottom: 0.5rem;
+  display: block;
+  text-align: left;
+  justify-content: flex-start !important;
+}
+
+.phase-button.active {
+  background-color: #343a40;
+  color: white;
+}
+
+/* === Disabled Click State === */
+.no-click {
+  background-color: #343a40 !important;
+  border-color: #343a40 !important;
+  pointer-events: none;
+  opacity: 1;
+  cursor: default;
+}
+
+/* === Chat Bubble Background === */
+.custom-chat-bg {
+  background-color: #dadada;
+}
+
+/* === Empty Chat Placeholder === */
+.empty-chat {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Right Sidebar Scroll Hidden === */
+.right-sidebar {
+  width: 200px;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.right-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* === Prompt Button Styling === */
+.prompt-btn {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #212529;
+  background-color: transparent;
+  border: 1px solid #212529;
+  border-radius: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  text-align: left;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.85rem;
+}
+
+.prompt-btn:hover {
+  background-color: #212529;
+  color: #fff;
+}
+
+/* Tooltip styling */
+.prompt-tooltip-wrapper {
+  position: relative;
+  display: block;
+}
+
+.prompt-tooltip {
+  position: absolute;
+  top: 50%;
+  left: -240px;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  white-space: normal;
+  max-width: 220px;
+  font-size: 0.85rem;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.prompt-tooltip-wrapper:hover .prompt-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
