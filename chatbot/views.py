@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from .models import ChatLog
 from .prompts import PROMPTS
 from django.http import JsonResponse
+from markdown import markdown
+
 @login_required
 def chat_view(request):
     phase = request.GET.get('phase') or request.POST.get('phase') or 'emphatize'
@@ -32,7 +34,7 @@ def chat_view(request):
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             return JsonResponse({
                 'user_input': user_input,
-                'gpt_response': gpt_reply
+                'gpt_response': markdown(gpt_reply)
             })
 
         return redirect('chat_view')
