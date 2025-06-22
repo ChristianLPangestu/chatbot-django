@@ -88,7 +88,7 @@
         {% for chat in chats %}
         <div class="mb-3 text-start w-100" style="max-width: 1700px;">
           <div class="p-3 rounded custom-chat-bg mb-1"><strong>You:</strong> {{ chat.user_input }}</div>
-          <div class="p-3 rounded bg-white border"><strong>AI:</strong> {{ chat.gpt_response }}</div>
+          <div class="p-3 rounded bg-white border"><strong>AI:</strong> {{ chat.gpt_response|markdown|safe }}</div>
         </div>
         {% endfor %}
 
@@ -196,7 +196,7 @@
           chatMessages.innerHTML += `
             <div class="mb-3 text-start w-100" style="max-width: 1700px;">
               <div class="p-3 rounded custom-chat-bg mb-1"><strong>You:</strong> ${data.user_input}</div>
-              <div class="p-3 rounded bg-white border"><strong>AI:</strong> ${data.gpt_response|markdown}</div>
+              <div class="p-3 rounded bg-white border"><strong>AI:</strong> ${data.gpt_response}</div>
             </div>
           `;
           messageInput.value = "";
