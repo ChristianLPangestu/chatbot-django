@@ -19,7 +19,7 @@ def login_view(request):
         form = CustomLoginForm(request.POST)
         if form.is_valid():
             login(request, form.get_user())
-            return redirect('chat')
+            return redirect('chat_view')
     else:
         form = CustomLoginForm()
     return render(request, 'accounts/login.html', {'form': form})

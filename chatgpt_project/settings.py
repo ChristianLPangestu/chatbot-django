@@ -135,3 +135,4 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 import os
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+TEST_OPEN_API_KEY = os.getenv("TEST_OPEN_API_KEY")

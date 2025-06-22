@@ -1,10 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - GPT-4 Design Assistant</title>
+  <title>Login - GPT-4o Design Assistant</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="{% static 'images/GIcon.png' %}" type="image/png">
   <style>
     body {
       height: 100vh;
@@ -32,20 +34,23 @@
   </style>
 </head>
 <body>
+  <!-- Panel kiri: deskripsi aplikasi -->
   <div class="left-panel">
     <p class="fs-5">
-      Selamat datang di <strong>GPT-4 Design Assistant</strong> —<br>
+      Selamat datang di <strong>GPT-4o Design Assistant</strong> —<br>
       platform kolaboratif berbasis AI yang membantumu mengeksplorasi ide,
       merancang prototipe, dan menyelesaikan setiap tahap Design Thinking
       dengan lebih terarah dan kreatif.
     </p>
   </div>
+  <!-- Panel kanan: form login -->
   <div class="right-panel">
     <div class="form-container">
       <h2 class="text-center mb-4">Login</h2>
+      <!-- Form login -->
       <form method="POST" novalidate>
         {% csrf_token %}
-      
+        <!-- Input: Username atau Email -->
         <div class="mb-3">
           <label for="email">Username or Email</label>
           <input type="text" name="email" id="email"
@@ -56,7 +61,7 @@
             <div class="invalid-feedback">{{ error }}</div>
           {% endfor %}
         </div>
-        
+        <!-- Input: Password -->
         <div class="mb-3">
           <label>Password</label>
           <input type="password" name="password"
@@ -68,7 +73,7 @@
           {% endfor %}
         </div>
         
-      
+      <!-- Tombol submit login -->
         <div class="d-grid">
           <button type="submit" class="btn btn-dark">Login</button>
         </div>
