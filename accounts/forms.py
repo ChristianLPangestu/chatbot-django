@@ -18,7 +18,7 @@ class CustomLoginForm(forms.Form):
     )
 
     def clean(self):
-        email_or_username = self.cleaned_data.get('email')
+        email_or_username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
 
         if not email_or_username or not password:
