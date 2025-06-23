@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'accounts',
     'chatbot',
     'whitenoise.runserver_nostatic',
-    'django.contrib.markup',
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
