@@ -150,7 +150,7 @@
 
   promptButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
-    const fullPrompt = btn.nextElementSibling.textContent;
+    const fullPrompt = btn.parentElement.querySelector('.full-prompt').textContent;
     inputField.value = fullPrompt;
     inputField.dispatchEvent(new Event('input'));
     inputField.focus();
