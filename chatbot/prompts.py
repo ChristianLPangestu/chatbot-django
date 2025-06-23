@@ -2,136 +2,136 @@ PROMPTS = {
     "emphatize": [
         {
             "prompt": "Sebagai peneliti UX, bantu saya membuat 5 pertanyaan wawancara untuk memahami kebutuhan pengguna aplikasi [topik].",
-            "label": "Membuat pertanyaan wawancara",
-            "tooltip": "Membantu pengguna untuk mengidentifikasi dan memahami kebutuhan eksplisit dan implisit dari target user terhadap aplikasi tertentu."
+            "label": "Pertanyaan Kebutuhan Pengguna",
+            "tooltip": "Menggali kebutuhan eksplisit dan implisit pengguna terhadap aplikasi tertentu.",
         },
         {
             "prompt": "Sebagai ahli riset pengguna, buatkan saya daftar pertanyaan yang menggali frustrasi pengguna saat menggunakan [jenis aplikasi].",
-            "label": "Menggali frustrasi pengguna",
-            "tooltip": "Fokus menggali pain point atau hambatan emosional yang dialami pengguna selama menggunakan produk serupa."
+            "label": "Frustrasi Pengguna",
+            "tooltip": "Mengungkap hambatan emosional atau pain point saat menggunakan aplikasi serupa.",
         },
         {
             "prompt": "Sebagai fasilitator design thinking, berikan 5 pertanyaan untuk memahami rutinitas dan harapan pengguna [target user].",
-            "label": "Memahami rutinitas dan harapan user",
-            "tooltip": "Mengarahkan user agar dapat memahami konteks kehidupan pengguna (daily life, goals) yang relevan dengan penggunaan produk."
+            "label": "Rutinitas dan Harapan",
+            "tooltip": "Memahami konteks kehidupan dan ekspektasi pengguna dalam menggunakan aplikasi.",
         },
         {
             "prompt": "Saya ingin memahami pola pikir pengguna. Sebagai pakar behavioral research, bantu saya membuat panduan wawancara pendek.",
-            "label": "Panduan wawancara pendek",
-            "tooltip": "Meningkatkan pemahaman terhadap sikap, nilai, dan pola berpikir target pengguna dengan pendekatan psikologis atau perilaku."
+            "label": "Pola Pikir Pengguna",
+            "tooltip": "Menggali sikap, nilai, dan cara berpikir pengguna dari sudut pandang psikologis.",
         },
         {
             "prompt": "Sebagai coach design sprint, buat template wawancara 5W1H untuk mengeksplorasi pengalaman pengguna saat [aktivitas tertentu].",
-            "label": "Template 5W1H wawancara",
-            "tooltip": "Menyusun kerangka pertanyaan terstruktur dan menyeluruh (apa, siapa, kapan, di mana, mengapa, dan bagaimana) untuk eksplorasi konteks penggunaan."
-        }
+            "label": "Wawancara 5W1H",
+            "tooltip": "Menggunakan kerangka 5W1H untuk mengeksplorasi pengalaman pengguna secara menyeluruh.",
+        },
     ],
     "define": [
         {
             "prompt": "Sebagai pakar design thinking, bantu saya menyusun problem statement dengan format “User membutuhkan … karena …” dari data ini: “[kutipan wawancara]”.",
-            "label": "Susun problem statement",
-            "tooltip": "Membantu pengguna menyusun problem statement terstruktur dengan format standar untuk mempermudah tahap ideasi."
+            "label": "Susun Problem Statement",
+            "tooltip": "Membantu menyusun pernyataan masalah terstruktur untuk tahap ideasi.",
         },
         {
             "prompt": "Sebagai mentor inovasi produk, ubah insight berikut menjadi kebutuhan pengguna: “[insight]”.",
-            "label": "Konversi insight jadi kebutuhan",
-            "tooltip": "Membantu pengguna mengubah hasil observasi atau wawancara (insight) menjadi pernyataan kebutuhan eksplisit."
+            "label": "Ubah Insight Jadi Kebutuhan",
+            "tooltip": "Mengubah insight dari riset menjadi kebutuhan eksplisit pengguna.",
         },
         {
             "prompt": "Saya ingin mengklarifikasi pain point. Sebagai analis user journey, bantu saya menguraikan masalah utama dari kutipan ini.",
-            "label": "Klarifikasi pain point",
-            "tooltip": "Membantu pengguna menafsirkan kutipan agar dapat mengisolasi titik masalah paling menyakitkan dari pengalaman pengguna."
+            "label": "Klarifikasi Pain Point",
+            "tooltip": "Mengisolasi titik masalah utama dari pengalaman pengguna.",
         },
         {
             "prompt": "Sebagai fasilitator workshop design, identifikasi kebutuhan implisit dalam kutipan pengguna berikut.",
-            "label": "Identifikasi kebutuhan implisit",
-            "tooltip": "Membantu menemukan kebutuhan tersirat yang belum dikatakan secara langsung oleh pengguna, berdasarkan kutipan atau cerita."
+            "label": "Kebutuhan Implisit",
+            "tooltip": "Mengungkap kebutuhan tersirat dari cerita atau kutipan pengguna.",
         },
         {
             "prompt": "Sebagai UX strategist, ringkas hasil wawancara menjadi 1 kalimat masalah inti.",
-            "label": "Ringkas insight jadi masalah inti",
-            "tooltip": "Membantu pengguna menyaring informasi menjadi kalimat yang singkat, padat, dan merepresentasikan masalah utama."
-        }
+            "label": "Ringkas Masalah Inti",
+            "tooltip": "Menyaring hasil wawancara menjadi satu kalimat yang merepresentasikan masalah utama.",
+        },
     ],
     "ideate": [
         {
             "prompt": "Sebagai fasilitator kreatif, berikan saya 5 ide menggunakan metode How Might We dari problem ini: “[problem]”.",
-            "label": "Ide dengan HMW",
-            "tooltip": "Membantu pengguna mengubah pernyataan masalah menjadi bentuk pertanyaan terbuka (How Might We) dan menghasilkan solusi kreatif dari setiap pertanyaan tersebut."
+            "label": "Ide How Might We",
+            "tooltip": "Mengubah masalah menjadi pertanyaan terbuka dan menghasilkan ide kreatif dari pendekatan How Might We.",
         },
         {
             "prompt": "Sebagai mentor startup, bantu saya menggunakan SCAMPER untuk mengeksplorasi solusi dari masalah berikut.",
-            "label": "Eksplorasi SCAMPER",
-            "tooltip": "Membantu pengguna mengeksplorasi solusi dengan pendekatan SCAMPER (Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse)."
+            "label": "Eksplorasi dengan SCAMPER",
+            "tooltip": "Mengeksplorasi ide berdasarkan pendekatan SCAMPER (Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse).",
         },
         {
             "prompt": "Sebagai inovator produk digital, beri saya 5 solusi dengan pendekatan minimal viable feature untuk [problem].",
-            "label": "Solusi berbasis MVF",
-            "tooltip": "Mengarahkan pengguna menghasilkan solusi sederhana yang tetap bernilai (MVP), guna mempercepat pengujian ide ke tahap prototipe."
+            "label": "Solusi MVP",
+            "tooltip": "Menghasilkan ide solusi minimum bernilai (MVP) agar cepat diuji melalui prototipe awal.",
         },
         {
             "prompt": "Saya butuh ide yang unik dan menyenangkan. Sebagai creative consultant, bantu saya eksplorasi gamifikasi untuk masalah berikut.",
-            "label": "Eksplorasi gamifikasi",
-            "tooltip": "Mendorong pengguna menghasilkan solusi dengan pendekatan gamifikasi agar ide menjadi lebih menarik, interaktif, dan menyenangkan bagi pengguna akhir."
+            "label": "Ide Gamifikasi",
+            "tooltip": "Menghasilkan solusi berbasis gamifikasi agar lebih interaktif dan menarik bagi pengguna.",
         },
         {
             "prompt": "Sebagai pengajar design thinking, bantu saya membuat brainstorming canvas digital berisi 5 ide untuk tantangan ini.",
-            "label": "Brainstorming canvas digital",
-            "tooltip": "Membantu pengguna merancang kerangka brainstorming visual yang terstruktur untuk menyusun dan mengelompokkan ide dengan lebih sistematis."
-        }
+            "label": "Brainstorming Canvas",
+            "tooltip": "Membuat kerangka visual untuk mengelompokkan dan merancang ide secara sistematis.",
+        },
     ],
     "prototype": [
         {
             "prompt": "Sebagai desainer UI/UX profesional, bantu saya menjelaskan prototipe awal dari ide ini dalam bentuk layout dan alur interaksi.",
-            "label": "Jelaskan prototipe awal",
-            "tooltip": "Membantu pengguna memvisualisasikan ide menjadi struktur antarmuka awal yang mencakup tata letak elemen dan alur navigasi."
+            "label": "Deskripsi Prototipe Awal",
+            "tooltip": "Memvisualisasikan ide ke dalam layout dan alur interaksi awal aplikasi.",
         },
         {
             "prompt": "Saya ingin tahu struktur UI untuk fitur berikut: “[fitur]”. Sebagai developer UX, bantu saya merancang wireframe deskriptifnya.",
-            "label": "Struktur UI fitur",
-            "tooltip": "Membimbing pengguna membuat deskripsi wireframe atau sketsa logis dari UI untuk fitur spesifik, sebagai dasar pengembangan visual."
+            "label": "Wireframe Fitur",
+            "tooltip": "Membuat wireframe deskriptif untuk struktur UI dari fitur tertentu.",
         },
         {
             "prompt": "Sebagai mentor UI design, tolong buat sketsa verbal dari halaman utama aplikasi [topik].",
-            "label": "Sketsa verbal halaman utama",
-            "tooltip": "Membantu pengguna menyusun narasi deskriptif tentang tampilan halaman utama secara urut dan intuitif."
+            "label": "Sketsa Verbal Halaman Utama",
+            "tooltip": "Menyusun deskripsi urut dan intuitif dari tampilan halaman utama aplikasi.",
         },
         {
             "prompt": "Sebagai ahli produk digital, bantu saya menjelaskan elemen utama dari prototipe [ide pilihan].",
-            "label": "Jelaskan elemen utama",
-            "tooltip": "Mengarahkan pengguna untuk mengidentifikasi komponen penting (button, input, visual cue) dalam prototipe agar sesuai kebutuhan user."
+            "label": "Elemen Utama Prototipe",
+            "tooltip": "Mengidentifikasi komponen penting dari prototipe untuk mendukung kebutuhan pengguna.",
         },
         {
             "prompt": "Sebagai reviewer UX prototyping, bantu saya menyusun spesifikasi antarmuka awal untuk fitur ini.",
-            "label": "Spesifikasi antarmuka awal",
-            "tooltip": "Membantu pengguna merinci aspek fungsional dan visual dari sebuah fitur dalam bentuk spesifikasi awal untuk pengujian."
-        }
+            "label": "Spesifikasi Antarmuka Awal",
+            "tooltip": "Merinci aspek fungsional dan visual dari fitur sebagai dasar pengujian awal.",
+        },
     ],
     "test": [
         {
             "prompt": "Sebagai fasilitator usability testing, bantu saya menyusun 3 pertanyaan untuk menguji prototipe berikut: “[deskripsi prototipe]”.",
-            "label": "Pertanyaan usability testing",
-            "tooltip": "Membantu pengguna merancang pertanyaan yang mengevaluasi kemudahan penggunaan, pemahaman fitur, dan kenyamanan saat berinteraksi dengan prototipe."
+            "label": "Pertanyaan Usability Testing",
+            "tooltip": "Menyusun pertanyaan untuk menguji kemudahan, pemahaman, dan kenyamanan saat menggunakan prototipe.",
         },
         {
             "prompt": "Sebagai evaluator UX, bantu saya buat checklist validasi awal sebelum tes prototipe [nama fitur].",
-            "label": "Checklist validasi awal",
-            "tooltip": "Menyediakan daftar pemeriksaan (pre-test checklist) agar prototipe siap diuji dan seluruh komponen penting sudah tersedia."
+            "label": "Checklist Pra-Uji Prototipe",
+            "tooltip": "Daftar pemeriksaan komponen penting sebelum prototipe diuji.",
         },
         {
             "prompt": "Saya ingin mengumpulkan masukan. Sebagai expert design researcher, buat 1 pertanyaan feedback terbuka yang tepat.",
-            "label": "Pertanyaan feedback terbuka",
-            "tooltip": "Membantu pengguna mendapatkan umpan balik reflektif dari user yang bersifat luas, mendalam, dan tidak mengarahkan."
+            "label": "Pertanyaan Feedback Terbuka",
+            "tooltip": "Pertanyaan reflektif untuk mendapatkan masukan luas dan mendalam dari pengguna.",
         },
         {
             "prompt": "Sebagai coach pengujian produk, bantu saya menyusun skenario testing untuk alur login aplikasi ini.",
-            "label": "Skenario testing login",
-            "tooltip": "Membantu menyusun langkah-langkah realistis yang akan dilalui pengguna saat menguji sebuah fungsi secara end-to-end."
+            "label": "Skenario Testing Alur Login",
+            "tooltip": "Langkah-langkah realistis untuk menguji fungsi login dari perspektif pengguna.",
         },
         {
             "prompt": "Sebagai penguji UX profesional, beri saya format penilaian yang bisa digunakan dalam pengujian terbimbing.",
-            "label": "Format penilaian UX",
-            "tooltip": "Menyediakan template atau format evaluasi yang dapat digunakan untuk mencatat observasi dan skor selama sesi usability testing."
-        }
-    ]
+            "label": "Format Penilaian UX Testing",
+            "tooltip": "Template evaluasi untuk mencatat observasi dan skor selama sesi pengujian.",
+        },
+    ],
 }

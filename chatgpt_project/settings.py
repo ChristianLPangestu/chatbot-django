@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'chatbot',
     'whitenoise.runserver_nostatic',
-    #'crispy_forms',
+    'django.contrib.markup',
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -148,4 +148,3 @@ TEST_OPEN_API_KEY = os.getenv("TEST_OPEN_API_KEY")
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-474d.up.railway.app']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#deb
