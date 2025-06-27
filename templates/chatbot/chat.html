@@ -15,12 +15,14 @@
 
 <body>
   <div class="main-layout d-flex" style="width: 100vw; height: 100vh;">
+    <!-- Left Sidebar -->
     <div class="sidebar" id="sidebar">
       <div class="d-flex justify-content-end mb-3">
         <button id="toggleSidebar" class="btn btn-outline-secondary btn-sm" title="Close Sidebar">
           <i class="fas fa-outdent fa-lg"></i>
         </button>
       </div>
+      <!-- User Info -->
       <div class="d-flex align-items-center mb-4">
         <i class="fas fa-user-circle fa-2x me-3 text-secondary"></i>
         <div>
@@ -28,9 +30,11 @@
           <div class="text-muted small">{{ request.user.email }}</div>
         </div>
       </div>
+      <!-- Phase Navigation Buttons -->
+      <!-- Menentukan fase design thinking yang dipilih -->
       <a href="?phase=emphatize"
         class="btn btn-outline-dark text-start phase-button w-100 {% if selected_phase == 'emphatize' %}active{% endif %}">
-        <i class="fas fa-users me-2"></i> Empathize
+        <i class="fas fa-users me-2"></i> Emphatize
       </a>
       <a href="?phase=define"
         class="btn btn-outline-dark phase-button w-100 {% if selected_phase == 'define' %}active{% endif %}">
@@ -48,6 +52,7 @@
         class="btn btn-outline-dark phase-button w-100 {% if selected_phase == 'test' %}active{% endif %}">
         <i class="fas fa-check me-2"></i> Test
       </a>
+      <!-- Logout Button -->
       <form method="POST" action="{% url 'logout' %}" class="mt-4">
         {% csrf_token %}
         <button type="submit" class="btn btn-outline-danger phase-button w-100">
@@ -55,15 +60,17 @@
         </button>
       </form>
     </div>
+    <!-- Button to re-open sidebar when hidden -->
     <button id="showSidebar" class="btn btn-secondary position-absolute m-3 d-none">
       <i class="fas fa-bars"></i>
     </button>
+    <!-- Main Chat Area -->
     <div class="chat-container">
 
       <div class="top-phase d-flex justify-content-center">
         <button class="btn btn-secondary rounded-pill px-4 no-click">
           {% if selected_phase == 'emphatize' %}
-          <i class="fas fa-users me-2"></i> Empathize
+          <i class="fas fa-users me-2"></i> Emphatize
           {% elif selected_phase == 'define' %}
           <i class="fas fa-file-alt me-2"></i> Define
           {% elif selected_phase == 'ideate' %}
@@ -75,6 +82,7 @@
           {% endif %}
         </button>
       </div>
+      <!-- Chat History -->
       <div class="chat-history" id="chat-messages">
         {% if chats %}
         {% for chat in chats %}
@@ -89,14 +97,18 @@
           <h5>What Can I help with?</h5>
         </div>
         {% endif %}
-        <div class="loading-indicator d-none" id="loading-indicator">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <span class="ms-2">AI is thinking...</span>
+      </div>
+
+      <div id="loading-indicator" class="text-center my-3 d-none">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
+
+      <!-- Input Box -->
+      <!-- <form method="POST" class="input-box"> -->
       <form id="chat-form" method="POST" class="input-box">
+
         {% csrf_token %}
         <input type="hidden" name="phase" value="{{ selected_phase }}">
         <div class="input-wrapper w-100">
@@ -106,6 +118,7 @@
         </div>
       </form>
     </div>
+    <!-- Right Sidebar: Prompt Templates -->
     <div class="sidebar right-sidebar">
       <h6 class="fw-bold mb-3">Prompt Templates</h6>
       {% for item in prompt_list %}
@@ -169,22 +182,17 @@
     console.log("Chat script loaded");
     const form = document.getElementById("chat-form");
     const messageInput = document.getElementById("messageBox");
-    const sendButton = document.getElementById("send-btn");
     const chatMessages = document.getElementById("chat-messages");
     const loadingIndicator = document.getElementById("loading-indicator");
+    const sendBtn = document.getElementById("send-btn");
+
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Show loading indicator
-      loadingIndicator.classList.remove('d-none');
-      // Disable input and button
+      loadingIndicator.classList.remove("d-none");
       messageInput.disabled = true;
-      sendButton.disabled = true;
-      
-      // Scroll to bottom to show loading indicator if it's at the end
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
+      sendBtn.disabled = true;
 
       fetch("{% url 'chat_view' %}", {
         method: "POST",
@@ -200,11 +208,11 @@
         .then(data => {
           if (data.user_input && data.gpt_response) {
             chatMessages.innerHTML += `
-              <div class="mb-3 text-start w-100" style="max-width: 1700px;">
-                <div class="p-3 rounded custom-chat-bg mb-1"><strong>You:</strong> ${data.user_input}</div>
-                <div class="p-3 rounded bg-white border"><strong>AI:</strong> ${data.gpt_response}</div>
-              </div>
-            `;
+            <div class="mb-3 text-start w-100" style="max-width: 1700px;">
+              <div class="p-3 rounded custom-chat-bg mb-1"><strong>You:</strong> ${data.user_input}</div>
+              <div class="p-3 rounded bg-white border"><strong>AI:</strong> ${data.gpt_response}</div>
+            </div>
+          `;
             messageInput.value = "";
             messageInput.style.height = "auto"; // reset tinggi textarea
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -212,16 +220,13 @@
         })
         .catch(error => {
           console.error("Error:", error);
-          // Optionally display an error message to the user
         })
         .finally(() => {
-          // Hide loading indicator
-          loadingIndicator.classList.add('d-none');
-          // Re-enable input and button
+          loadingIndicator.classList.add("d-none");
           messageInput.disabled = false;
-          sendButton.disabled = false;
-          messageInput.focus(); // Focus back on the input field
-        });
+          sendBtn.disabled = false;
+          messageInput.focus();
+        })
     });
   });
 </script>
