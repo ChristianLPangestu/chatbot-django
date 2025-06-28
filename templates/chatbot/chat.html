@@ -88,7 +88,7 @@
         {% for chat in chats %}
         <div class="mb-0 text-start w-100" style="max-width: 1700px;">
           <div class="p-3 rounded custom-chat-bg mb-1"><strong>You:</strong> {{ chat.user_input }}</div>
-          <div class="p-3 rounded bg-white border"><strong>AI:</strong> {{ chat.gpt_response|markdown|safe }}</div>
+          <div class="p-3 rounded bg-white border mb-1"><strong>AI:</strong> {{ chat.gpt_response|markdown|safe }}</div>
         </div>
         {% endfor %}
 
@@ -98,6 +98,12 @@
         </div>
         {% endif %}
       </div>
+
+      <div id="typing-indicator" class="typing-indicator d-none">
+        <span></span><span></span><span></span>
+      </div>
+
+
       <!-- Input Box -->
       <!-- <form method="POST" class="input-box"> -->
       <form id="chat-form" method="POST" class="input-box">
@@ -105,10 +111,9 @@
         {% csrf_token %}
         <input type="hidden" name="phase" value="{{ selected_phase }}">
         <div class="input-wrapper w-100">
-          <textarea id="messageBox" name="message" class="form-control" placeholder="Type your message..." rows="1"
-            required></textarea>
+          <textarea id="messageBox" name="message" class="form-control" placeholder="Type your message..."
+            rows="1"></textarea>
           <button id="send-btn" type="submit" class="send-btn"><i class="fas fa-paper-plane"></i></button>
-          <span id="loading" class="spinner-border spinner-border-sm text-secondary ms-2 d-none" role="status"></span>
         </div>
       </form>
     </div>
@@ -177,18 +182,23 @@
     const messageInput = document.getElementById("messageBox");
     const chatMessages = document.getElementById("chat-messages");
     const sendBtn = document.getElementById("send-btn");
-    const loadingEl = document.getElementById("loading");
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
+      const messageText = messageInput.value.trim();
+      if (!messageText) {
+        messageInput.focus();
+        return;
+      }
+
       const formData = new FormData(form);
 
       messageInput.disabled = true;
       sendBtn.disabled = true;
-      loadingEl.classList.remove("d-none");
+      document.getElementById("typing-indicator").classList.remove("d-none");
 
       fetch("{% url 'chat_view' %}", {
         method: "POST",
@@ -220,8 +230,9 @@
         .finally(() => {
           messageInput.disabled = false;
           sendBtn.disabled = false;
-          loadingEl.classList.add("d-none");
           messageInput.focus();
+          document.getElementById("typing-indicator").classList.add("d-none");
+
         });
     });
   });
